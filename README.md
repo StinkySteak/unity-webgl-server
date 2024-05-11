@@ -8,3 +8,6 @@ This plugin allow you to host a webGL build using unity editor simple web server
 1. Tools > WebGL Editor Server
 2. Start Server
 3. Launch Browser
+
+### Credits
+bugfinders
