@@ -1,0 +1,12 @@
+{
+  "name": "com.stinkysteak.webgl-editor-server",
+  "version": "0.1.0",
+  "displayName": "WebGL Editor Server",
+  "description": "Unity Plugin to Host WebGL run build locally without \"Build and Run\" with zero dependencies",
+  "unity": "2021.3",
+  "author": {
+    "name": "Stinkysteak",
+    "email": "stinkysteak@steaksoft.com",
+    "url": "https://steaksoft.net"
+  }
+}
