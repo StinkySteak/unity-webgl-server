@@ -14,6 +14,9 @@ namespace StinkySteak.WebGLEditorServer
         private const string WEB_SERVER_PATH = @"Data\PlaybackEngines\WebGLSupport\BuildTools\SimpleWebServer.exe";
 
         private string _lastBuildPath;
+        private bool _profilerEnabled;
+
+        private WebGLProfiler _profiler = new();
 
         [MenuItem("Tools/WebGL Editor Server")]
         public static void SetGameBuild()
@@ -35,6 +38,8 @@ namespace StinkySteak.WebGLEditorServer
 
             GUILayout.Label($"Last Build Path: {GetLastBuildPath()}", GUILayout.Height(30));
             DrawField();
+
+            _profilerEnabled = GUILayout.Toggle(_profilerEnabled, "Auto Connect Profiler");
 
             GUILayout.BeginHorizontal();
 
@@ -83,6 +88,9 @@ namespace StinkySteak.WebGLEditorServer
             _process.Start();
 
             Debug.Log($"[{nameof(WebGLServerEditorWindow)}]: Starting server.... lastBuildPath: {lastBuildPath}");
+
+            if (_profilerEnabled)
+                _profiler.StartServer();
         }
 
         private void TerminateServer()
@@ -95,6 +103,8 @@ namespace StinkySteak.WebGLEditorServer
             {
                 Debug.Log($"[{nameof(WebGLServerEditorWindow)}]: {e.Message}");
             }
+
+            _profiler.Shutdown();
         }
 
         private void LaunchBrowser()
